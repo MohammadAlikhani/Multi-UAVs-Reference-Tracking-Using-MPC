@@ -61,9 +61,9 @@ $$
 #### Constraints
 $$
 \begin{aligned}
-0 &\le u_1,u_2 \le mg,\\
-|\dot{x}|,|\dot{y}| \le 2\ \frac{m}{s},\\
-|\theta| &\le 0.1\ \{rad},\\
+0 &\le u_1,u_2 \le {mg},
+|\dot{x}|,|\dot{y}| \le 2\ \frac{m}{s},
+|\theta| &\le 0.1\ \{rad},
 |\dot{\theta}| \le \tfrac{\pi}{2}\ \frac{rad}{s}.
 \end{aligned}
 $$
