@@ -80,7 +80,7 @@ $$
 
 
 
-#### Constraints on Inputs and states
+#### Constraints on Inputs
 
 $$
 \begin{aligned}
@@ -89,6 +89,7 @@ u_k(1)+u_k(2) &\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\quad \alpha = 5.
 \end{aligned}
 $$
 
+#### Constraints states
 
 $$
 \begin{aligned}
