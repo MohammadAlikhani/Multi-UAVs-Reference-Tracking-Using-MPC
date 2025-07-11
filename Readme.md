@@ -58,7 +58,7 @@ $$
 (J = \sum_{k=0}^{H_p} e_k^{\top} Q e_k \ + \ u_k^{\top} R u_k\).
 $$
 
-#### Constraints
+#### Constraints on Inputs and states
 $$
 \begin{aligned}
 0 &\le u_1,u_2 \le {mg},
@@ -80,8 +80,7 @@ $$
 
 
 
-#### Constraints
-*Inputs and states*  
+#### Constraints on Inputs and states
 
 $$
 \begin{aligned}
