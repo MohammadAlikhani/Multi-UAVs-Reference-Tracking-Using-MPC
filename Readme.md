@@ -41,10 +41,13 @@ The UAV is simplified to a 2D quadrotor with 6 state variables and 2 control inp
 
 **Dynamics**
 
-```text
-ẍ  = (1/m) · (u₁ + u₂) · sin θ
-ÿ  = (1/m) · (u₁ + u₂) · cos θ – g
-θ̈ = (L/I) · (u₁ – u₂)
+$$
+\begin{aligned}
+\ddot{x} &= \frac{1}{m}\bigl(u_1+u_2\bigr)\sin\theta \\[4pt]
+\ddot{y} &= \frac{1}{m}\bigl(u_1+u_2\bigr)\cos\theta - g \\[4pt]
+\ddot{\theta} &= \frac{L}{I}\,(u_1-u_2)
+\end{aligned}
+$$
 
 ---
 
@@ -55,18 +58,22 @@ The UAV is simplified to a 2D quadrotor with 6 state variables and 2 control inp
 - Linearized around hover: `θ = 0`, `ẋ = ẏ = 0`
 - Solved using **YALMIP + quadprog**
 - Cost function:
-  J = Σ_{k=0}^{Hₚ} ( e_kᵀ Q e_k + u_kᵀ R u_k )
-
+  $J = \sum_{k=0}^{H_p} e_k^\top Q e_k \;+\; u_k^\top R u_k$.
 - Constraints on thrust, position, velocity, and pitch
- 0 ≤ u₁, u₂ ≤ m g
-|ẋ|, |ẏ| ≤ 2 m/s
-|θ| ≤ 0.1 rad,   |θ̇| ≤ π/2 rad/s
+
+$$
+\begin{aligned}
+0 &\le u_1,\;u_2 \le m g \\[6pt]
+|\dot{x}|,\;|\dot{y}| &\le 2 \ \text{m/s} \\[6pt]
+|\theta| &\le 0.1 \ \text{rad}, \qquad
+|\dot{\theta}| \le \tfrac{\pi}{2} \ \text{rad/s}
+\end{aligned}
+$$
 
 
 ### 🌪 Nonlinear MPC
 
-- Adds wind disturbance as drag force:
-  f_ext = β · v · |v|
+- Adds wind disturbance as drag force: `$f_{\text{ext}} = \beta\,\mathbf{v}\,\lVert\mathbf{v}\rVert$`
 - Full nonlinear model solved using **CasADi + IPOPT**
 - Cost includes tracking, energy, smoothness, and pitch penalties
 
