@@ -53,7 +53,7 @@ $$
 * Linearised around hover (`θ = 0`, `ẋ = ẏ = 0`).
 * Solved with **YALMIP + `quadprog`**.
 
-Cost function  
+#### Cost function  
 $$
 (J = \sum_{k=0}^{H_p} e_k^{\!\top} Q e_k \;+\; u_k^{\!\top} R u_k\).
 $$
