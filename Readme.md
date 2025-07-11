@@ -113,7 +113,7 @@ $$
 ## ⚙️ Implementation
 | Controller | Discretisation | Solver | Notes |
 |------------|---------------|--------|-------|
-| LMPC | Linear, Euler | `quadprog` (QP) | Fast; no disturbance model |
+| LMPC | Linear, Euler | quadprog (QP) | Fast; no disturbance model |
 | NLMPC | Non-linear, Euler | IPOPT (NLP) | Handles wind & full dynamics |
 
 MATLAB scripts produce and evaluate both controllers against a sinusoidal reference.
