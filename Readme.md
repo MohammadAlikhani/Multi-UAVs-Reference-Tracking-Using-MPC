@@ -54,15 +54,17 @@ $$
 * Solved with **YALMIP + `quadprog`**.
 
 Cost function  
-\(J = \sum_{k=0}^{H_p} e_k^{\!\top} Q e_k \;+\; u_k^{\!\top} R u_k\).
+$$
+(J = \sum_{k=0}^{H_p} e_k^{\!\top} Q e_k \;+\; u_k^{\!\top} R u_k\).
+$$
 
 #### Constraints
 $$
 \begin{aligned}
-0 &\le u_1,u_2 \le mg, \\
-|\dot{x}|, |\dot{y}| &\le 2\;\text{m s}^{-1}, \\
-|\theta| &\le 0.1\;\text{rad}, \qquad
-|\dot{\theta}| \le \tfrac{\pi}{2}\;\text{rad s}^{-1}.
+0 &\le u_1,u_2 \le mg,\\
+|\dot{x}|, |\dot{y}| &\le 2\ \text{m s}^{-1}, \\
+|\theta| &\le 0.1\ \text{rad}, \\
+|\dot{\theta}| \le \tfrac{\pi}{2}\ \text{rad s}^{-1}.
 \end{aligned}
 $$
 
@@ -71,6 +73,7 @@ $$
 ### 🌪 Non-linear MPC
 
 Cost function  
+
 $$
 \begin{aligned}
 J = \sum_{k=1}^{N} \Big[ &
@@ -86,13 +89,14 @@ $$
 
 | Term | Expression | Value |
 |------|------------|-------|
-| Tracking | \( (r_k - Cx_k)^{\!\top} Q (r_k - Cx_k) \) | \(Q = 5I_{3\times3}\) |
+| Tracking | $$ \( (r_k - Cx_k)^{\!\top} Q (r_k - Cx_k) \) $$ | \(Q = 5I_{3\times3}\) |
 | Control effort | \( u_k^{\!\top}R_k u_k \) | \(R_k = I + w x_0^{0.5}\begin{bmatrix}1\\1\end{bmatrix}\!\begin{bmatrix}1 & 1\end{bmatrix},\; w=10\) |
 | Smoothness | \( \Delta u_k^{\!\top}S\Delta u_k \) | \(S = 5I_{2\times2}\) |
 | State penalty | \( x_k^{\!\top}Q_{\text{state}}x_k \) | \(Q_{\text{state}}=\mathrm{diag}(0,2,0,2,0,5)\) |
 
 #### Constraints
 *Inputs*  
+
 $$
 \begin{aligned}
 0 \le u_k(1),u_k(2) \le mg, \quad  
@@ -101,6 +105,7 @@ u_k(1)+u_k(2)\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\;\alpha=5.
 $$
 
 *States*  
+
 $$
 \begin{aligned}
 -10\le x,y\le 10, \;
@@ -108,9 +113,11 @@ $$
 -0.1\le\theta\le0.1, \;
 -2\le\dot{\theta}\le2.
 \end{aligned}
+
 $$
 
 *Torque*  
+
 $$
 \Bigl|\frac{l}{I}\bigl(u_k(1)-u_k(2)\bigr)\Bigr| \le 2.
 $$
@@ -146,7 +153,7 @@ MATLAB scripts produce and evaluate both controllers against a sinusoidal refere
 |---------|-------|
 | **LMPC: tracking (Q = 1, R = 1, Hp = 20)** | ![LMPC performance](./NMPC/img/p2.png) |
 | **LMPC: control signals** | ![LMPC controls](./NMPC/img/l1.jpg) |
-| **NLMPC: tracking (w = 2.5 m s⁻¹, –45°)** | ![NLMPC performance](./NMPC/img/uu.png) |
+| **NLMPC: tracking (w = 2.5 m s⁻¹, –45°)** | ![NLMPC performance](./NMPC/img/uu.jpg) |
 | **NLMPC: drone 1** | ![NLMPC drone 1](./NMPC/img/u3.jpg) |
 | **NLMPC: drone 2** | ![NLMPC drone 2](./NMPC/img/u4.jpg) |
 | **NLMPC: drone 3** | ![NLMPC drone 3](./NMPC/img/u5.jpg) |
