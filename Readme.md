@@ -75,14 +75,7 @@ $$
 #### Cost function  
 
 $$
-\begin{aligned}
-J = \sum_{k=1}^{N} \Big[ &
-  (r_k - Cx_k)^{\!\top} Q (r_k - Cx_k)
-+ u_k^{\!\top} R_k u_k \\
-&+ \Delta u_k^{\!\top} S \Delta u_k
-+ x_k^{\!\top} Q_{\text{state}} x_k
-\Big].
-\end{aligned}
+(J = \sum_{k=1}^{N} \Big[ &(r_k - Cx_k)^{\!\top} Q (r_k - Cx_k) + u_k^{\!\top} R_k u_k \\ &+ \Delta u_k^{\!\top} S \Delta u_k + x_k^{\!\top} Q_{\text{state}} x_k \Big].)
 $$
 
 
