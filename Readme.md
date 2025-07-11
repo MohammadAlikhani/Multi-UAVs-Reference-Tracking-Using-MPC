@@ -6,7 +6,7 @@ This project implements **Linear** and **Nonlinear Model Predictive Control (LMP
 
 ---
 
-##  Table of Contents
+##  📚Table of Contents
 
 - [Overview](#overview)
 - [System Model](#system-model)
@@ -17,7 +17,7 @@ This project implements **Linear** and **Nonlinear Model Predictive Control (LMP
 
 ---
 
-## Overview
+## 🧠 Overview
 
 The objective is to compare LMPC and NLMPC approaches for trajectory tracking in a 3-UAV system under constraints, disturbances, and nonlinear dynamics. 
 
@@ -25,47 +25,48 @@ The controllers are evaluated using Mean Squared Error (MSE) and behavior under 
 
 ---
 
-## System Model
+## 🌀 System Model
 
 The UAV is simplified to a 2D quadrotor with 6 state variables and 2 control inputs (motor thrusts):
 
-**States**
-- `x`, `y`: Position
-- `θ`: Pitch angle
-- `ẋ`, `ẏ`, `θ̇`: Velocities
+| **States** | Meaning |
+|------------|---------|
+| `x`, `y`   | position |
+| `θ`        | pitch angle |
+| `ẋ`, `ẏ`, `θ̇` | velocities |
 
-**Inputs**
-- `u₁`, `u₂`: Left and right motor thrusts
+| **Inputs** | Meaning |
+|------------|---------|
+| `u₁`, `u₂` | left / right motor thrust |
 
 **Dynamics**
-\[
-\begin{cases}
-\ddot{x} = \frac{1}{m}(u_1 + u_2)\sin(\theta) \\
-\ddot{y} = \frac{1}{m}(u_1 + u_2)\cos(\theta) - g \\
-\ddot{\theta} = \frac{L}{I}(u_1 - u_2)
-\end{cases}
-\]
+
+```text
+ẍ  = (1/m) · (u₁ + u₂) · sin θ
+ÿ  = (1/m) · (u₁ + u₂) · cos θ – g
+θ̈ = (L/I) · (u₁ – u₂)
 
 ---
 
-## Controllers
+## 🧮 Controllers
 
 ### 📏 Linear MPC
 
 - Linearized around hover: `θ = 0`, `ẋ = ẏ = 0`
 - Solved using **YALMIP + quadprog**
 - Cost function:
-  \[
-  J = \sum_{k=0}^{H_p} e_k^T Q e_k + u_k^T R u_k
-  \]
+  J = Σ_{k=0}^{Hₚ} ( e_kᵀ Q e_k + u_kᵀ R u_k )
+
 - Constraints on thrust, position, velocity, and pitch
+ 0 ≤ u₁, u₂ ≤ m g
+|ẋ|, |ẏ| ≤ 2 m/s
+|θ| ≤ 0.1 rad,   |θ̇| ≤ π/2 rad/s
+
 
 ### 🌪 Nonlinear MPC
 
 - Adds wind disturbance as drag force:
-  \[
-  f_{\text{ext}} = \beta v |v|
-  \]
+  f_ext = β · v · |v|
 - Full nonlinear model solved using **CasADi + IPOPT**
 - Cost includes tracking, energy, smoothness, and pitch penalties
 
@@ -79,7 +80,7 @@ The UAV is simplified to a 2D quadrotor with 6 state variables and 2 control inp
 
 ---
 
-##  Results
+##  📊 Results
 
 | Controller | MSE (x) | MSE (y) |
 |------------|--------:|--------:|
@@ -90,18 +91,29 @@ The UAV is simplified to a 2D quadrotor with 6 state variables and 2 control inp
 - NLMPC compensates for wind but shows higher MSE in `x` due to nonlinear effects
 - Thrust and pitch vary among drones to handle tracking and disturbance rejection
 
-### Sample Plots
+### 📷 Sample Plots
 
-- ![LMPC Performance Q = 1,R = 1,Hp = 20](./NMPC/img/p2.png)
-- ![LMPC Controls](./NMPC/img/l1.jpg)
-- ![NMPC Performance w = 2.5 m/s, -45º](./NMPC/img/uu.png)
-- ![NLMPC Drone 1](./NMPC/img/u3.jpg)
-- ![NLMPC Drone 2](./NMPC/img/u4.jpg)
-- ![NLMPC Drone 3](./NMPC/img/u5.jpg)
+## 📈 LMPC Performance (Q = 1, R = 1, Hp = 20)
+![LMPC Performance](./NMPC/img/p2.png)
+
+## 🎛️ LMPC Controls
+![LMPC Controls](./NMPC/img/l1.jpg)
+
+## 🌪️ NLMPC Performance (w = 2.5 m/s, –45º)
+![NLMPC Performance](./NMPC/img/uu.png)
+
+## 🚁 NLMPC – Drone 1 (Thrust & Pitch)
+![NLMPC Drone 1](./NMPC/img/u3.jpg)
+
+## 🚁 NLMPC – Drone 2 (Thrust & Pitch)
+![NLMPC Drone 2](./NMPC/img/u4.jpg)
+
+## 🚁 NLMPC – Drone 3 (Thrust & Pitch)
+![NLMPC Drone 3](./NMPC/img/u5.jpg)
 
 ---
 
-## Conclusion
+## 🧾 Conclusion
 
 - **LMPC**: Simple, fast, effective for ideal conditions, but can't handle disturbances
 - **NLMPC**: More robust and practical for real systems with disturbances and nonlinearities
