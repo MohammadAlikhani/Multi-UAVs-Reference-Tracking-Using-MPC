@@ -84,7 +84,7 @@ $$
 
 $$
 \begin{aligned}
-0 &\le u_k(1),\,u_k(2) \le mg, \\[4pt]
+0 &\le u_k(1),\,u_k(2) \le mg, \\
 u_k(1)+u_k(2) &\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\quad \alpha = 5.
 \end{aligned}
 $$
