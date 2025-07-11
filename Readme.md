@@ -51,7 +51,7 @@ $$
 
 ### 📏 Linear MPC
 * Linearised around hover (`θ = 0`, `ẋ = ẏ = 0`).
-* Solved with **YALMIP + `quadprog`**.
+* Solved with **YALMIP + quadprog**.
 
 ####  Cost function  
 $$
@@ -89,6 +89,10 @@ u_k(1)+u_k(2) &\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\quad \alpha = 5.
 \end{aligned}
 $$
 
+$$
+\Bigl|\frac{l}{I}\bigl(u_k(1)-u_k(2)\bigr)\Bigr| \le 2.
+$$
+
 #### Constraints on states
 
 $$
@@ -100,11 +104,7 @@ $$
 \end{aligned}
 $$
 
-*Torque*  
 
-$$
-\Bigl|\frac{l}{I}\bigl(u_k(1)-u_k(2)\bigr)\Bigr| \le 2.
-$$
 
 *Solution method:* **CasADi + IPOPT** for the full non-linear model.
 
