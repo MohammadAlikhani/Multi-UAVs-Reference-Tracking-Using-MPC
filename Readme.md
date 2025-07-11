@@ -89,14 +89,14 @@ u_k(1)+u_k(2) &\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\quad \alpha = 5.
 \end{aligned}
 $$
 
-#### Constraints states
+#### Constraints on states
 
 $$
 \begin{aligned}
--10\le x,y\le 10, \;
--5\le\dot{x},\dot{y}\le 5, \;
--0.1\le\theta\le0.1, \;
--2\le\dot{\theta}\le2.
+-10\le x,y\le 10, \\
+-5\le\dot{x},\dot{y}\le 5,\\
+-0.1\le\theta\le0.1,\\
+-2\le\dot{\theta}\le2. 
 \end{aligned}
 
 $$
