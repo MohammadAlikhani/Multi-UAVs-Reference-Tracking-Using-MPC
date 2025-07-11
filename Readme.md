@@ -55,15 +55,15 @@ $$
 
 ####  Cost function  
 $$
-(J = \sum_{k=0}^{H_p} e_k^{\top} Q e_k \;+\; u_k^{\top} R u_k\).
+(J = \sum_{k=0}^{H_p} e_k^{\top} Q e_k \ + \ u_k^{\top} R u_k\).
 $$
 
 #### Constraints
 $$
 \begin{aligned}
 0 &\le u_1,u_2 \le mg,\\
-|\dot{x}|, |\dot{y}| &\le 2\ \text{m s}^{-1}, \\
-|\theta| &\le 0.1\ \text{rad}, \\
+|\dot{x}|, |\dot{y}| &\le 2\ \text{m s}^{-1},\\
+|\theta| &\le 0.1\ \text{rad},\\
 |\dot{\theta}| \le \tfrac{\pi}{2}\ \text{rad s}^{-1}.
 \end{aligned}
 $$
@@ -72,7 +72,7 @@ $$
 
 ### 🌪 Non-linear MPC
 
-Cost function  
+#### Cost function  
 
 $$
 \begin{aligned}
@@ -85,28 +85,18 @@ J = \sum_{k=1}^{N} \Big[ &
 \end{aligned}
 $$
 
-#### Weight Matrices
 
-| Term | Expression | Value |
-|------|------------|-------|
-| Tracking | $$ \( (r_k - Cx_k)^{\!\top} Q (r_k - Cx_k) \) $$ | \(Q = 5I_{3\times3}\) |
-| Control effort | \( u_k^{\!\top}R_k u_k \) | \(R_k = I + w x_0^{0.5}\begin{bmatrix}1\\1\end{bmatrix}\!\begin{bmatrix}1 & 1\end{bmatrix},\; w=10\) |
-| Smoothness | \( \Delta u_k^{\!\top}S\Delta u_k \) | \(S = 5I_{2\times2}\) |
-| State penalty | \( x_k^{\!\top}Q_{\text{state}}x_k \) | \(Q_{\text{state}}=\mathrm{diag}(0,2,0,2,0,5)\) |
 
 #### Constraints
-*Inputs*  
+*Inputs and states*  
 
 $$
 \begin{aligned}
 0 \le u_k(1),u_k(2) \le mg, \quad  
 u_k(1)+u_k(2)\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\;\alpha=5.
 \end{aligned}
-$$
 
-*States*  
 
-$$
 \begin{aligned}
 -10\le x,y\le 10, \;
 -5\le\dot{x},\dot{y}\le 5, \;
