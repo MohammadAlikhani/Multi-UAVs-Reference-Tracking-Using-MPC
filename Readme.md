@@ -98,7 +98,6 @@ $$
 -0.1\le\theta\le0.1,\\
 -2\le\dot{\theta}\le2. 
 \end{aligned}
-
 $$
 
 *Torque*  
