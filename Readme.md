@@ -84,11 +84,13 @@ $$
 
 $$
 \begin{aligned}
-0 \le u_k(1),u_k(2) \le mg, \quad  
-u_k(1)+u_k(2)\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\;\alpha=5.
+0 &\le u_k(1),\,u_k(2) \le mg, \\[4pt]
+u_k(1)+u_k(2) &\le mg\bigl(1-\alpha|x_{0.5}|\bigr),\quad \alpha = 5.
 \end{aligned}
+$$
 
 
+$$
 \begin{aligned}
 -10\le x,y\le 10, \;
 -5\le\dot{x},\dot{y}\le 5, \;
