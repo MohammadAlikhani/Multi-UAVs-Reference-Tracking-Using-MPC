@@ -131,7 +131,7 @@ MATLAB scripts produce and evaluate both controllers against a sinusoidal refere
 * NLMPC compensates for wind but with higher x-axis error.  
 * Drones modulate thrust & pitch differently to satisfy formation and safety.
 
-### 📷 Sample Plots
+### 📷 Plots
 
 | Caption | Image |
 |---------|-------|
