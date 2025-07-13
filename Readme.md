@@ -1,6 +1,8 @@
 # 🛸 Multi-UAVs Reference Tracking Using MPC
 
 > Final project for the *Model Predictive Control* course at Universitat Politècnica de Catalunya (UPC).
+> 
+> Author: Mohammad Alikhani Najafabadi   📧 mohammad.najafabadi@estudiantat.upc.edu
 
 This work implements **Linear** and **Non-linear Model Predictive Control** (LMPC & NLMPC) for reference-trajectory tracking with a fleet of three quadrotor UAVs, accounting for collision avoidance, hard input/state constraints, and wind disturbances.
 
@@ -149,9 +151,4 @@ MATLAB scripts produce and evaluate both controllers against a sinusoidal refere
 * **NLMPC** – robust to disturbances and model mismatch, better suited to real systems.  
 * **MPC** in general is valuable when prediction and explicit constraints are required.
 
----
 
-## 👤 Author
-**Mohammad Alikhani Najafabadi**  
-Model Predictive Control – UPC  
-📧 mohammad.najafabadi@estudiantat.upc.edu
