@@ -2,7 +2,7 @@
 
 > Final project for the *Model Predictive Control* course at Universitat Politècnica de Catalunya (UPC).
 > 
-> Author: Mohammad Alikhani Najafabadi   📧 mohammad.najafabadi@estudiantat.upc.edu
+> Author: Marco Alikhani Najafabadi   
 
 This work implements **Linear** and **Non-linear Model Predictive Control** (LMPC & NLMPC) for reference-trajectory tracking with a fleet of three quadrotor UAVs, accounting for collision avoidance, hard input/state constraints, and wind disturbances.
 
